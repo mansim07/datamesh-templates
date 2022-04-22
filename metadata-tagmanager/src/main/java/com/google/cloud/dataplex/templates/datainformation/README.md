@@ -3,7 +3,7 @@
 The Data product information annotation modules requires an yaml file matching the Data Catalog Tag Template structure input and Dataplex Entity. 
 
 
-# Tag Templates 
+#  Tag Template Structure 
  Create the Tag template in Data Catalog. This is a one time job and should be owned by the centralized governance team rather than individual domain teams. A tag should be created for each region. 
  The field_id and type should exactly match to what is mentioned below. A mismatch can lead to failures. 
 
@@ -25,11 +25,25 @@ The Data product information annotation modules requires an yaml file matching t
 | Last Modified Date  | last_modified_date  | when the tag was last modified  | DATETIME  | REQUIRED  |
 
 
-# Tag Template Structure 
-TBD
-
 # Derivation Logic
-TBD
+ | field id  | derivation logic | remarks  | 
+| ------------- | ------------- | ------------- | 
+|data_product_id | dku- + hash of the lake, zone and asset| TBD: Replace will be better logic |
+|data_product_name| name of the data assert| Recommend to provide this name manually
+|data_product_type| Entity.systemname()| Example: BIGQUERY, GCS..|
+|data_product_description|Derived from entity description | Default: Description for the product is currently not available | 
+|data_product_icon|ICON_URL_PREFIX/entityname.jpg| Example: https://bankofmars/icon-lib/customerdata.jpg |
+|data_product_category|Derived from the "data_product_type" label in Dataplex. Can be set to master_data, reference_data, system_data, application_data|Default: Application Data |
+|data_product_geo_region|locaion from the entity path||
+|data_product_owner|fully qualified  assert_name@_domainowner@| In future, should be derived using getIamPolicy and set to assert owner|
+|data_product_documentation|https://" + ORG_NAME + "/product-documentation/| |
+|domain|name of the Dataplex lake||
+|domain_owner|fully qualified  lake_name@_domainowner@|In future, should be derived using getIamPolicy and set to lake owner|
+|domain_type|Derived from the "domain_type" label in Dataplex. Can be set to source or consumer|Default: Source|
+|last_modified_by|System user||
+|last_modify_date|System currrent time||
+
+
 
 # Getting Started
 
@@ -38,7 +52,7 @@ There are 2 ways to create a Data Product Annotations:
     
 -   Option1:  Manually provide the values in a yaml file. This is a great option for testing before automation. See [sample](https://github.com/mansim07/datamesh-templates/blob/d6f51a4fc14ab5e8784cf453570187d53f865647/metadata-tagmanager/src/main/java/com/google/cloud/dataplex/samples/DataProductInfo-manual.yaml)
 
--   Option2: Leave it empty or say "derived" to fetch the tag values dynamically. This option will require setting a few labels in the Dataplex lakes and zone level. See [sample](https://github.com/mansim07/datamesh-templates/blob/d6f51a4fc14ab5e8784cf453570187d53f865647/metadata-tagmanager/src/main/java/com/google/cloud/dataplex/samples/DataProductInfo-auto.yaml)
+-   Option2: Leave it empty or say "derived" to fetch the tag values dynamically. You can also provide values manually in which case input values will take precedence. This option will require setting a few labels in the Dataplex lakes and zone level. See [sample](https://github.com/mansim07/datamesh-templates/blob/d6f51a4fc14ab5e8784cf453570187d53f865647/metadata-tagmanager/src/main/java/com/google/cloud/dataplex/samples/DataProductInfo-auto.yaml)
 
 ## 2. Upload the yaml file to a GCS location 
 ## 3. Set labels  [For Automation]
