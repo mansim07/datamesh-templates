@@ -123,7 +123,7 @@ public class CreateTagTemplates {
                                 .setPrimitiveType(FieldType.PrimitiveType.TIMESTAMP).build())
                         .build();
         TagTemplate tagTemplate =
-                TagTemplate.newBuilder().setDisplayName("Data Product Classification")
+                TagTemplate.newBuilder().setDisplayName("Data Product Classification").setIsPubliclyReadable(true)
                         .putFields("is_pii", is_pii).putFields("is_confidential", is_confidential)
                         .putFields("is_restricted", is_restricted).putFields("is_public", is_public)
                         .putFields("is_encrypted", is_encrypted)
@@ -299,6 +299,7 @@ public class CreateTagTemplates {
 
         TagTemplate tagTemplate = TagTemplate.newBuilder()
                 .setDisplayName("Data Product Information")
+                .setIsPubliclyReadable(true)
                 .putFields("data_product_id", data_product_id)
                 .putFields("data_product_name", data_product_name)
                 .putFields("data_product_type", data_product_type).putFields("domain", domain)
@@ -349,7 +350,8 @@ public class CreateTagTemplates {
 
             CreateTagTemplateRequest request =
                     CreateTagTemplateRequest.newBuilder().setParent(name.toString())
-                            .setTagTemplateId(tagTemplateId).setTagTemplate(template).build();
+                            .setTagTemplateId(tagTemplateId).setTagTemplate(template)
+                            .build();
             client.createTagTemplate(request);
             System.out.println("Tag template " + template.getDisplayName()
                     + " created successfully in location " + name);
