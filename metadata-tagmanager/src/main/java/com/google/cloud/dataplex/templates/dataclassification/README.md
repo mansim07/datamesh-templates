@@ -7,20 +7,16 @@ The Data product classification annotation modules requires an yaml file matchin
 
 # Tag Template Structure 
 
+TBD
 
+# Getting Started
 
-
-
-# Pre-requisites
-
-### Step1: prepare the Input Yaml file
-Create a Yaml Input file
-
+## 1. Create an Input Yaml file
 For Option#1, Manually provide the inputs in the yaml file. This is a great option for testing before automation  
 For Option#2, you can use the default.yaml file. 
 
-### Step3: Enable the DLP Data Profiling at Organization-level[Optional]
-Enable the Data profiling job either at the project level or the organization level and make sure entry is available for your data product in the BQ output table of DLP profiling. This table details is required for automation. 
+## 2. Enable the DLP Data Profiling at Organization-level[Optional]
+You may always give or override the inputs using your yaml input, but if you want to build the tag dynamically, you'll need to make sure DLP scan results are available in a BQ table. After that, the util can dynamically pull data from the table where the DLP scan results are synchronised. Enable the Data Profiling job either at the project or organization level, and check that your data product is listed in the DLP profiling BQ output table. This information about the table is essential for automation.
 
 # Execution
 The code can be executed locally as well as via custom tasks in Dataplex 
