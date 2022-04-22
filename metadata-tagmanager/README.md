@@ -29,6 +29,9 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
 1. Dataplex - Logically organize your data products into lakes, zones and assets
 2. DLP - Enable automatic DLP for BigQuery
 3. Create tag templates in Data Catalog
+4. Data Quality Results from CloudDQ engine
+
+Each templated will require a certain input for end-to-end automation. 
 
 # Getting Started
 
@@ -39,7 +42,7 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
 1. Clone this repository:
 
     ```
-    git clone ssh://maharanam@google.com@source.developers.google.com:2022/p/gcp-data-solutions/r/data-mesh-demo
+    git clone git@github.com:mansim07/datamesh-templates.git
 
     cd data-mesh-demo/data-product-toolkit/tagmanager
     ```
@@ -71,9 +74,16 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
     Build the entire project using the maven compile command.
     ```
         mvn clean install
-        ```
+    ```
 
-5. Executing Templates
+5. Upload the output jar to a gs bucket
+    ```
+      gs util cp tagmanager-1.0-SNAPSHOT.jar gs://<bucket-name>/<<folder-name>>
+    ```
+
+6. Create the tag templates in Data Catalog 
+
+7. Executing Templates
 
     The README files for each of the different templates have detailed instruction on how to use them. Please see the README.md file for the relevant section.
 
