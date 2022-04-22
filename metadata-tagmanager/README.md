@@ -83,9 +83,7 @@ Each templated will require a certain input for end-to-end automation.
 
 6. Create the tag templates in Data Catalog
     ```
-    export GOOGLE_CLOUD_PROJECT="<your_GCP_project_id>"
-    gcloud config set project ${GOOGLE_CLOUD_PROJECT}
-
+        java -cp target/tagmanager-1.0-SNAPSHOT.jar  com.google.cloud.dataplex.setup.CreateTagTemplates <<project-name>> <<location>>
     ```
 7. Executing Templates
 
