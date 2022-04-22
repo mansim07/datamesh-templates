@@ -97,7 +97,7 @@ Provide the following inputs in Task Configurations
  
  entity_id: Entity_id of the Dataplex entity e.g. cc_transactions_data
  
- input_file: Name of the input yaml file. Set it to "default.yaml" for dynamic annotation but make sure the DLP results are available  e.g. DataClassification.yaml. If providing some manual overrides make sure it is avaibable in classpath by specifing the file in File URIS above. 
+ input_file: Name of the input yaml file. Set it to "default.yaml" for dynamic annotation but make sure the above mentioned data labels are available
 
 **Service Account**:
 A service account that has access to the DLP results table and access to create tags for the data assert.
