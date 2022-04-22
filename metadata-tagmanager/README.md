@@ -44,7 +44,7 @@ Each templated will require a certain input for end-to-end automation.
     ```
     git clone git@github.com:mansim07/datamesh-templates.git
 
-    cd data-mesh-demo/data-product-toolkit/tagmanager
+    cd datamesh-templates/metadata-tagmanager/
     ```
 2.  Set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to a service account key JSON file path.
 
