@@ -1,7 +1,6 @@
 # Data Product Information Annotations 
 
-The Data product information annotation modules requires an yaml file matching the Data Catalog Tag Template structure input and Dataplex Entity. 
-
+The Data product information annotation modules requires an yaml file matching the Data Catalog Tag Template structure input and Dataplex Entities. 
 
 #  Tag Template Structure 
  Create the Tag template in Data Catalog. This is a one time job and should be owned by the centralized governance team rather than individual domain teams. A tag should be created for each region. 
@@ -23,7 +22,6 @@ The Data product information annotation modules requires an yaml file matching t
 | Domain Type  | domain_type  | type of the domain e.g. Source or Consumer  | ENUM  | REQUIRED  |
 | Last Modified Date  | last_modified_by  | individual or system id responsible for modifying the tag | STRING  | REQUIRED  |
 | Last Modified Date  | last_modified_date  | when the tag was last modified  | DATETIME  | REQUIRED  |
-
 
 # Derivation Logic
  | field id  | derivation logic | remarks  | 
