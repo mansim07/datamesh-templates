@@ -24,12 +24,11 @@ Under-the-hood, this modules makes use of the below underlying GCP technologies:
 A centralized team should be responsible for owning and maintainng this repository and Data Product Owners/Domain team should be able use thus module to automate annotations of their data products.
 
 ## Pre-requisites
-While the code is very flexbile in terms of implement, a set of pre-requisites are required to automate it end-to-end.
+While the code is very flexbile in terms of implement, a set of pre-requisites are required to automate metadata annotations end-to-end.
 
 1. Dataplex - Logically organize your data products into lakes, zones and assets
 2. DLP - Enable automatic DLP for BigQuery
 3. Create tag templates in Data Catalog
-
 
 # Getting Started
 
@@ -64,9 +63,9 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
     ```
     This will format the code and add a license header. To verify that the code is formatted correctly, run:
 
-        ```
+    ```
         mvn spotless:check
-        ```
+    ```
 
 4. Building the Project
     Build the entire project using the maven compile command.
@@ -74,7 +73,7 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
         mvn clean install
         ```
 
-5. Execution Templates
+5. Executing Templates
 
     The README files for each of the different templates have detailed instruction on how to use them. Please see the README.md file for the relevant section.
 
@@ -107,7 +106,7 @@ While the code is very flexbile in terms of implement, a set of pre-requisites a
 
 
 **Service Account**:
-A service account that has access to the DLP results table and access to create tags for the data assert.
+A service account that has access to the DLP results table and access to create tags for the data entities.
 
 # Development
 Contributing
