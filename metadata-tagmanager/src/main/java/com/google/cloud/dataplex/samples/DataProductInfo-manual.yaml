@@ -1,0 +1,14 @@
+data_product_id: dku-0010021
+data_product_name: "Customer Data"
+data_product_type: "BIGQUERY"
+data_product_description: "Customer information data product is source of truth and authroized data source containing all customer information" 
+data_product_icon: "<img src=\"default.svg\" alt=\"customerdata Icon\">"
+data_product_category: "Master Data"
+data_product_geo_region:  inferred
+data_product_owner: "core_customers_productowner@"
+domain: "Core - Customers"
+data_product_documentation: "<a href=\"https://dataproductdocumentation/core_customers.html\">Product Documentation</a>"
+domain_type: "Source" 
+domain_owner: "core_customers_domain@"
+last_modified_by: derived
+last_modify_date: "2013-10-27T13:00:00.325234Z"
