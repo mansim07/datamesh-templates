@@ -219,7 +219,14 @@ public class CreateTagTemplates {
                         .newBuilder().setPrimitiveType(FieldType.PrimitiveType.RICHTEXT).build())
                 .build();
 
-        TagTemplateField domain = TagTemplateField.newBuilder().setDisplayName("Data Domain")
+        TagTemplateField domain = TagTemplateField.newBuilder()
+                .setDisplayName("Data Domain").setIsRequired(true).setOrder(5)
+                .setDescription("Domain of the data product. An organization should already have a list of data domain. VALUES - Org specific.If using dataplex for Management make sure your Lake's Display Name matches the allowed value list specified here. Predefining this is recommeneded")
+                .setType(FieldType.newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING)
+                        .build())
+                .build();
+
+        /*TagTemplateField domain = TagTemplateField.newBuilder().setDisplayName("Data Domain")
                 .setIsRequired(true).setOrder(5)
                 .setDescription(
                         "Domain of the data product. An organization should already have a list of data domain. VALUES - Org specific.If using dataplex for Management make sure your Lake's Display Name matches the allowed value list specified here. Predefining this is recommeneded")
@@ -254,7 +261,9 @@ public class CreateTagTemplates {
                                 EnumValue.newBuilder().setDisplayName("wholesale banking - CRE"))
                         .addAllowedValues(
                                 EnumValue.newBuilder().setDisplayName("risk management - AML"))))
-                .build();
+                .build(); */
+
+
         TagTemplateField domain_owner = TagTemplateField.newBuilder().setDisplayName("Domain Owner")
                 .setIsRequired(true).setOrder(4)
                 .setDescription(

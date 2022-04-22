@@ -306,13 +306,19 @@ public class DataProductInfo {
                                                                                                 .getDataProductType())
                                                                                 .build())
                                                                 .build());
-                                                values.put("domain", TagField.newBuilder()
+                                                values.put("domain", TagField
+                                                                .newBuilder()
+                                                                .setStringValue(config
+                                                                                .getDomain())
+                                                                .build());
+                                                /*values.put("domain", TagField.newBuilder()
                                                                 .setEnumValue(TagField.EnumValue
                                                                                 .newBuilder()
                                                                                 .setDisplayName(config
                                                                                                 .getDomain())
                                                                                 .build())
-                                                                .build());
+                                                                .build()); */
+
                                                 values.put("data_product_description", TagField
                                                                 .newBuilder()
                                                                 .setStringValue(config

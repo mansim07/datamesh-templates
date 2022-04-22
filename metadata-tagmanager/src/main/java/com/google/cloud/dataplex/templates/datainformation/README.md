@@ -29,3 +29,30 @@ The Data product information annotation modules requires an yaml file matching t
 | Domain Type  | domain_type  | type of the domain e.g. Source or Consumer  | ENUM  | REQUIRED  |
 | Last Modified Date  | last_modified_by  | individual or system id responsible for modifying the tag | STRING  | REQUIRED  |
 | Last Modified Date  | last_modified_date  | when the tag was last modified  | DATETIME  | REQUIRED  |
+
+
+## Using Custom tasks in Dataplex
+
+### Inputs: Task Configurations
+**Type**: Spark
+
+**Main Class or jar file**: com.google.cloud.dataplex.templates.tagmanager.dataclassification.DataProductClassification
+
+**File uris(Optional)**: **GCS Path to the Yaml file* e.g. gs://data-catalog-demo/DataClassification.yaml
+
+**Arguments**:
+
+ tag_template_id: name of the tag template id. e.g. projects/mdm-dg/locations/us-central1/tagTemplates/data_classification
+
+ project_id: Project Id of the Dataplex lake e.g. mdm-dg
+
+ location: Location of the Dataplex lake e.g. us-central1
+
+ lake_id: Id of the Dataplex lake e.g. consumer-banking-credit-cards-domain-prod
+
+ zone_id: Zone id of the Dataplex lake e.g. data-product-zone
+
+ entity_id: Entity_id of the Dataplex entity e.g. cc_transactions_data
+
+ input_file: Name of the input yaml file. Set it to "default.yaml" for dynamic annotation but make sure the DLP results are available  e.g. DataClassification.yaml. If providing some manual overrides make sure it is avaibable in classpath by specifing the file in File URIS above.
+
