@@ -1,0 +1,17 @@
+dlp_report_config:
+  project_id: ""
+  dataset_id: ""
+  table_id: ""
+is_pii: true
+sensitivity_score: derived
+risk_score: derived
+info_types: derived
+is_confidential: derived
+is_restricted: derived
+is_public: derived
+is_encrypted: derived
+encryption_key_type:  derived
+last_profiling_date: derived
+last_modified_by: derived
+last_modified_date: derived
+related_data_products: derived
