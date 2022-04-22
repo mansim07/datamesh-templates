@@ -46,21 +46,13 @@ Each templated will require a certain input for end-to-end automation.
 
     cd data-mesh-demo/data-product-toolkit/tagmanager
     ```
-2. Obtain authentication credentials.
-
-    Create local credentials by running the following command and following the oauth2 flow (read more about the command [here][auth_command]):
-
-
-    ```
-    gcloud auth application-default login
-    ```
-    Or manually set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to a service account key JSON file path.
+2.  Set the GOOGLE_APPLICATION_CREDENTIALS environment variable to point to a service account key JSON file path.
 
     Learn more at [Setting Up Authentication for Server to Server Production Applications][ADC].
 
     Note: Application Default Credentials is able to implicitly find the credentials as long as the application is running on Compute Engine, Kubernetes Engine, App Engine, or Cloud Functions.
 
-3. Format Code [Optional]
+3. Format Code
     ```
         mvn spotless:apply
     ```
