@@ -77,9 +77,9 @@ Provide the following inputs in Task Configurations
 
 **Type**: Spark 
 
-**Main Class or jar file**: com.google.cloud.dataplex.templates.dataclassification
+**Main Class or jar file**: com.google.cloud.dataplex.templates.dataproductinformation.DataProductInfo
 
-**File uris(Optional)**: **GCS Path to the Yaml file* e.g. gs://data-catalog-demo/DataClassification.yaml 
+**File uris(Optional)**: **GCS Path to the Yaml file* e.g. gs://data-catalog-demo/DataProductInfo.yaml 
 
 **Arguments**:
  
