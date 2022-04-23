@@ -1,5 +1,5 @@
 # Datamesh Templates
-This repository contains a series of Datamesh templates that automate the metadata management process in the Data as a Product lifecycle for Dataplex managed data assets. This may be accomplished with Dataplex's Custom Tasks utility, which is based on the Sparkservelss service and can be readily customized by developers.
+This repository contains a series of Datamesh templates that automate the metadata management process in the Data as a Product lifecycle for Dataplex managed data assets. This may be accomplished with Dataplex's custom tasks utility, which is based on the Sparkservelss service and can be readily customized by developers.
 
 With this set of automation code, you'll be able to build data-as-a-products and annotate them at scale which is a primary challenge. The tool now supports automated annotations for the following:
 
@@ -15,7 +15,7 @@ Currently only supports BigQuery storage only. Tool can be easily extended to su
 
 Under-the-hood, this modules makes use of the below underlying GCP technologies:
 - Google Cloud Dataplex
-- Google Cloud DLP
+- Google Cloud DLP(as a pre-requisite only.)
 - Google Cloud Data Catalog
 - Google Cloud Logging
 - Google Cloud Billing
