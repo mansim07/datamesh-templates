@@ -56,17 +56,10 @@ There are 2 ways to create a Data Product Annotations:
 ## 3. Set labels  [For Automation]
 Make sure the below labels are available on  Dataplex
 
-1. At lake-level
-    
-    Label Key: domain_type
-
-    Accepted Values: source,consumer 
-
-2. At zone-level 
-    
-    Label Key: data_product_catagory
-
-    Accepted Values: master_data,system_data, application_data, reference_data
+ | where  | label key | label values  | 
+| ------------- | ------------- | ------------- | 
+|Dataplex lake | domain_type| source,consumer  |
+|Dataplex zone | data_product_catagory| master_data,system_data, application_data, reference_data  |
 
 # Execution
 The code can be executed locally as well as via custom tasks in Dataplex 
