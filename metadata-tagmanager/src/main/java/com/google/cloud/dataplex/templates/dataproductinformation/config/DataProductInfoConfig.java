@@ -14,7 +14,7 @@
  * the License.
  */
 
-package com.google.cloud.dataplex.templates.datainformation.config;
+package com.google.cloud.dataplex.templates.dataproductinformation.config;
 
 import com.fasterxml.jackson.annotation.JsonAutoDetect;
 

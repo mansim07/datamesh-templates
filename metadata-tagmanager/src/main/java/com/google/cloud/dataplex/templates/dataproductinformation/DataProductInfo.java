@@ -13,7 +13,7 @@
  * the License.
  */
 
-package com.google.cloud.dataplex.templates.datainformation;
+package com.google.cloud.dataplex.templates.dataproductinformation;
 
 import static com.google.cloud.dataplex.utils.Constants.API_URI_BQ;
 import static com.google.cloud.dataplex.utils.Constants.DOC_URL_PREFIX;
@@ -42,7 +42,7 @@ import com.google.cloud.datacatalog.v1.DataCatalogClient;
 import com.google.cloud.datacatalog.v1.Entry;
 import com.google.cloud.datacatalog.v1.LookupEntryRequest;
 import com.google.cloud.datacatalog.v1.TagField;
-import com.google.cloud.dataplex.templates.datainformation.config.DataProductInfoConfig;
+import com.google.cloud.dataplex.templates.dataproductinformation.config.DataProductInfoConfig;
 import com.google.cloud.dataplex.utils.InputArgsParse;
 import com.google.cloud.dataplex.utils.TagOperations;
 import com.google.cloud.dataplex.v1.DataplexServiceClient;
