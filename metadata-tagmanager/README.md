@@ -5,11 +5,12 @@ With this set of automation code, you'll be able to build data-as-a-products and
 
 - Data product classfication (Table-level only)
 - Data product quality(TBD)
-- Data Product info
-- Data Product versioning(TBD)
+- Data product info
+- Data product versioning(TBD)
 - Data product cost metric(TBD)
 - Data product publish info(TBD)
 - Data product consumption info(TBD)
+- Data product retention policy(TBD)
 
 Currently only supports BigQuery storage only. Tool can be easily extended to support other storages in future
 
