@@ -92,6 +92,8 @@ public class DataProductClassification {
                                                                         .getDatasetId().isEmpty()
                                                         && !config.getDLPReportConfig().getTableId()
                                                                         .isEmpty()) {
+                                                LOGGER.info("Fetching the Results from the DLP table...");
+                                                
 
                                                 FetchBqDlpResults dlpResults = FetchBqDlpResults
                                                                 .getResults(entity.getDataPath(),

@@ -18,14 +18,14 @@ public class FetchBqDlpResults {
     LoggerFactory.getLogger(FetchBqDlpResults.class);
 
     public static final String QUERY = "SELECT table_profile.sensitivity_score.score as sensitivity_score,table_profile.data_risk_level.score as risk_score, table_profile.encryption_status as encryption_status, "
-            + "CONCAT(STRING_AGG(info_types.info_type.name),STRING_AGG(other_info_types.info_type.name))  AS info_types, table_profile.profile_last_generated.seconds as ts_seconds , table_profile.profile_last_generated.nanos as ts_nanos"
+            + "CASE WHEN CONCAT(STRING_AGG(info_types.info_type.name),STRING_AGG(other_info_types.info_type.name)) IS NULL THEN 'No Info Types' ELSE  CONCAT(STRING_AGG(info_types.info_type.name),STRING_AGG(other_info_types.info_type.name)) END  AS info_types, table_profile.profile_last_generated.seconds as ts_seconds , table_profile.profile_last_generated.nanos as ts_nanos"
             + " FROM `"
             + "%s"
             + "."
             + "%s"
             + "."
             + "%s"
-            + "`, UNNEST(table_profile.predicted_info_types) AS info_types,UNNEST(table_profile.other_info_types) AS other_info_types "
+            + "` LEFT OUTER JOIN UNNEST(table_profile.predicted_info_types) AS info_types LEFT OUTER JOIN UNNEST(table_profile.other_info_types) AS other_info_types "
             + " WHERE table_profile.dataset_id='" + "%s"
             + "'"
             + " and table_profile.table_id='" + "%s" + "'"
@@ -116,6 +116,7 @@ public class FetchBqDlpResults {
 
             try {
                 TableResult bqResults = bigquery.query(queryConfig);
+                LOGGER.info("Query executed against the DLP Table is {}" , bqQuery);
                 LOGGER.info("Number of rows retrieved {}", bqResults.getTotalRows());
 
                 result.setNumRows(bqResults.getTotalRows()); 

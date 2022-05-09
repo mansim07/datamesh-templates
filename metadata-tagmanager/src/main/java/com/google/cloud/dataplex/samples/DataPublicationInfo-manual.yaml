@@ -1,5 +1,5 @@
 data_exchange_platform : "Analytics Hub"
-data_exchange_url : "<a href=\"https://console.cloud.google.com/bigquery(analyticshub:projects/838325203291/locations/us/dataExchanges/customer_data_products_17fec8f254f/listings/customer_data_product_17fec9dd5ff)\">Data Exchange</a>"
+data_exchange_url : "<a href=\"https://console.cloud.google.com/bigquery(analyticshub:projects/838325203291/locations/us/dataExchanges/customer_data_products_17fec8f254f/listings/encrypted_first_party_data_180a7474571)\">Data Exchange URL</a>"
 access_instructions : "Use Bigquery to subscribe and consume the data in your own subscriber project"
 host_date: derived
 last_modified_by: derived 
