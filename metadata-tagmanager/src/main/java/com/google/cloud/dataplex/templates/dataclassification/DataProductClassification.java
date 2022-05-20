@@ -198,32 +198,38 @@ public class DataProductClassification {
         public static DataClassificationConfig resetValues(DataClassificationConfig config,
                         FetchBqDlpResults dlpResults) {
 
-                if (config.getSensitivityScore().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getSensitivityScore().equalsIgnoreCase(DERIVE_INDICATOR)
+                                || config.getSensitivityScore().isEmpty()) {
                         config.setSensitivityScore(dlpResults.getSensitivityScore());
 
                 }
 
-                if (config.getRiskScore().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getRiskScore().equalsIgnoreCase(DERIVE_INDICATOR)
+                || config.getRiskScore().isEmpty()) {
                         config.setRiskScore(dlpResults.getRiskScore());
 
                 }
 
-                if (config.getInfoTypes().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getInfoTypes().equalsIgnoreCase(DERIVE_INDICATOR)
+                || config.getInfoTypes().isEmpty()) {
                         config.setInfoTypes(dlpResults.getInfoTypes());
 
                 }
 
-                if (config.getEncryptionKeyType().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getEncryptionKeyType().equalsIgnoreCase(DERIVE_INDICATOR)
+                || config.getEncryptionKeyType().isEmpty()) {
                         config.setEncryptionKeyType(dlpResults.getEncryptionStatus());
 
                 }
 
-                if (config.getLastProfilingDate().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getLastProfilingDate().equalsIgnoreCase(DERIVE_INDICATOR)
+                || config.getLastProfilingDate().isEmpty()) {
                         config.setLastProfilingDate(Timestamps.toString(dlpResults.getProfileTs()));
 
                 }
 
-                if (config.getRelatedDataProducts().equalsIgnoreCase(DERIVE_INDICATOR)) {
+                if (config.getRelatedDataProducts().equalsIgnoreCase(DERIVE_INDICATOR)
+                || config.getRelatedDataProducts().isEmpty()) {
                         config.setRelatedDataProducts(
                                         "<a href=\"https://console.cloud.google.com/bigquery?p="
                                                         + config.getDLPReportConfig().getProjectId()
@@ -237,13 +243,15 @@ public class DataProductClassification {
 
 
                 if (config.getSensitivityScore().equalsIgnoreCase("SENSITIVITY_HIGH") || config
-                                .getSensitivityScore().equalsIgnoreCase("SENSITIVITY_MODERATE")) {
+                                .getSensitivityScore().equalsIgnoreCase("SENSITIVITY_MODERATE")
+                                || config.getSensitivityScore().isEmpty()) {
                         config.setHasPii(true);
                 } else
                         config.setHasPii(false);
 
                 if (config.getLastModifiedBy().equalsIgnoreCase(DERIVE_INDICATOR)
-                                || config.getLastModifiedBy().isEmpty()) {
+                                || config.getLastModifiedBy().isEmpty()
+                                ) {
                         config.setLastModifiedBy(System.getProperty("user.name"));
 
                 }
