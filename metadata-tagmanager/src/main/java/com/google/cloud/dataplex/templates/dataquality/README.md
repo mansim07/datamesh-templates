@@ -1,0 +1,6 @@
+ - consistency
+  - correctness
+  - duplication
+  - completeness
+  - conformance
+  - integrity

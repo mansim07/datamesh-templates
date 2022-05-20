@@ -30,7 +30,7 @@ import org.apache.commons.cli.DefaultParser;
 import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
-import org.slf4j.Logger;
+import org.slf4j.Logger; 
 import org.slf4j.LoggerFactory;
 
 import com.google.cloud.dataplex.utils.InputArgsParse;
@@ -99,6 +99,7 @@ public class DataProductQuality {
             } 
 
             Entity entity = mdplx.getEntity(dataplex_entity_name);
+
             try (DataCatalogClient dataCatalogClient = DataCatalogClient.create()) {
                 if (entity.getSystem().name() == "BIGQUERY") {
                     linkedResource = String.format(
@@ -112,6 +113,8 @@ public class DataProductQuality {
                       //  .setFullyQualifiedName("dataplex:" + dataplex_entity_name_fqdn).build();
 
                 Entry tableEntry = dataCatalogClient.lookupEntry(lookupEntryRequest);
+
+                System.out.println("Testing Column Level Tags ---------------------:::" + tableEntry.getSchema().getColumnsList());
 
                 /* Parse the input data */
                 //Path path = Paths.get("gs://data-catalog-demo/ProductInfo.yaml"); 

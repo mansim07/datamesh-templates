@@ -18,7 +18,7 @@ public class FetchBqDlpResults {
     LoggerFactory.getLogger(FetchBqDlpResults.class);
 
     public static final String QUERY = "SELECT table_profile.sensitivity_score.score as sensitivity_score,table_profile.data_risk_level.score as risk_score, table_profile.encryption_status as encryption_status, "
-            + "CASE WHEN CONCAT(STRING_AGG(info_types.info_type.name),STRING_AGG(other_info_types.info_type.name)) IS NULL THEN 'No Info Types' ELSE  CONCAT(STRING_AGG(info_types.info_type.name),STRING_AGG(other_info_types.info_type.name)) END  AS info_types, table_profile.profile_last_generated.seconds as ts_seconds , table_profile.profile_last_generated.nanos as ts_nanos"
+            + "CONCAT(CASE WHEN STRING_AGG(info_types.info_type.name) IS NULL THEN '' ELSE STRING_AGG(info_types.info_type.name) END , CASE WHEN STRING_AGG(other_info_types.info_type.name) IS NULL THEN '' ELSE STRING_AGG(other_info_types.info_type.name)  END) as info_types, table_profile.profile_last_generated.seconds as ts_seconds , table_profile.profile_last_generated.nanos as ts_nanos"
             + " FROM `"
             + "%s"
             + "."

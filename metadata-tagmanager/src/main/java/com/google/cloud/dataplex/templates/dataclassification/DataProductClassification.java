@@ -76,16 +76,27 @@ public class DataProductClassification {
                                         cmd.getOptionValue(LAKE_ID_OPT),
                                         cmd.getOptionValue(ZONE_ID_OPT),
                                         cmd.getOptionValue(ENTITY_ID_OPT)));
+                        String dataplex_entity_name_fqdn = String.format("%s.%s.%s.%s.%s",
+                                        cmd.getOptionValue(PROJECT_NAME_OPT),
+                                        cmd.getOptionValue(LOCATION_OPT),
+                                        cmd.getOptionValue(LAKE_ID_OPT),
+                                        cmd.getOptionValue(ZONE_ID_OPT),
+                                        cmd.getOptionValue(ENTITY_ID_OPT));
 
                         try (DataCatalogClient dataCatalogClient = DataCatalogClient.create()) {
 
                                 if ("BIGQUERY".equals(entity.getSystem().name())) {
 
+                                        /*
+                                         * entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                         * .newBuilder() .setLinkedResource(String.format("%s/%s",
+                                         * API_URI_BQ, entity.getDataPath())) .build());
+                                         */
+
                                         entry = dataCatalogClient.lookupEntry(LookupEntryRequest
                                                         .newBuilder()
-                                                        .setLinkedResource(String.format("%s/%s",
-                                                                        API_URI_BQ,
-                                                                        entity.getDataPath()))
+                                                        .setFullyQualifiedName("dataplex:"
+                                                                        + dataplex_entity_name_fqdn)
                                                         .build());
                                         if (!config.getDLPReportConfig().getProjectId().isEmpty()
                                                         && !config.getDLPReportConfig()
@@ -93,7 +104,7 @@ public class DataProductClassification {
                                                         && !config.getDLPReportConfig().getTableId()
                                                                         .isEmpty()) {
                                                 LOGGER.info("Fetching the Results from the DLP table...");
-                                                
+
 
                                                 FetchBqDlpResults dlpResults = FetchBqDlpResults
                                                                 .getResults(entity.getDataPath(),
@@ -158,10 +169,10 @@ public class DataProductClassification {
                                                         .setTimestampValue(Timestamps.parse(config
                                                                         .getLastModifiedDate()))
                                                         .build());
-                                        values.put("related_data_products",
-                                                        TagField.newBuilder().setRichtextValue(config
+                                        values.put("related_data_products", TagField.newBuilder()
+                                                        .setRichtextValue(config
                                                                         .getRelatedDataProducts())
-                                                                        .build());
+                                                        .build());
 
                                         TagOperations.publishTag(entry, dataCatalogClient,
                                                         cmd.getOptionValue(TAG_TEMPLATE_ID_OPT),

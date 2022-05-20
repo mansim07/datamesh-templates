@@ -95,17 +95,31 @@ public class DataProductInfo {
                                                 cmd.getOptionValue(LOCATION_OPT),
                                                 cmd.getOptionValue(LAKE_ID_OPT),
                                                 cmd.getOptionValue(ZONE_ID_OPT)));
+
+                                String dataplex_entity_name_fqdn = String.format("%s.%s.%s.%s.%s",
+                                                cmd.getOptionValue(PROJECT_NAME_OPT),
+                                                cmd.getOptionValue(LOCATION_OPT),
+                                                cmd.getOptionValue(LAKE_ID_OPT),
+                                                cmd.getOptionValue(ZONE_ID_OPT), cmd.getOptionValue(ENTITY_ID_OPT));
+
                                 try (DataCatalogClient dataCatalogClient =
                                                 DataCatalogClient.create()) {
 
                                         if ("BIGQUERY".equals(entity.getSystem().name())) {
 
-                                                entry = dataCatalogClient.lookupEntry(
+                                            /*    Use this if tagging needs to be created at the actualy data object level
+                                            entry = dataCatalogClient.lookupEntry(
                                                                 LookupEntryRequest.newBuilder()
                                                                                 .setLinkedResource(
                                                                                                 String.format("%s/%s",
                                                                                                                 API_URI_BQ,
                                                                                                                 entity.getDataPath()))
+                                                                                .build()); */
+
+                                                entry = dataCatalogClient.lookupEntry(
+                                                                LookupEntryRequest.newBuilder()
+                                                                                .setFullyQualifiedName(
+                                                                                                "dataplex:" + dataplex_entity_name_fqdn)
                                                                                 .build());
 
                                                 if (config.getDataProductId()
@@ -306,18 +320,15 @@ public class DataProductInfo {
                                                                                                 .getDataProductType())
                                                                                 .build())
                                                                 .build());
-                                                values.put("domain", TagField
-                                                                .newBuilder()
-                                                                .setStringValue(config
-                                                                                .getDomain())
+                                                values.put("domain", TagField.newBuilder()
+                                                                .setStringValue(config.getDomain())
                                                                 .build());
-                                                /*values.put("domain", TagField.newBuilder()
-                                                                .setEnumValue(TagField.EnumValue
-                                                                                .newBuilder()
-                                                                                .setDisplayName(config
-                                                                                                .getDomain())
-                                                                                .build())
-                                                                .build()); */
+                                                /*
+                                                 * values.put("domain", TagField.newBuilder()
+                                                 * .setEnumValue(TagField.EnumValue .newBuilder()
+                                                 * .setDisplayName(config .getDomain()) .build())
+                                                 * .build());
+                                                 */
 
                                                 values.put("data_product_description", TagField
                                                                 .newBuilder()
