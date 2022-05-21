@@ -156,15 +156,15 @@ public class CreateTagTemplates {
                 .build();
 
         TagTemplateField data_product_type = TagTemplateField.newBuilder()
-                .setDisplayName("Data Product Name").setIsRequired(true).setOrder(12)
-                .setDescription("Name of the data product")
+                .setDisplayName("Data Product System").setIsRequired(true).setOrder(12)
+                .setDescription("Name of the data product System")
                 .setType(FieldType.newBuilder().setEnumType(FieldType.EnumType.newBuilder()
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("BIGQUERY"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("LOOKER"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("MYSQL"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("POSTGRES"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("APIGEE"))
-                        .addAllowedValues(EnumValue.newBuilder().setDisplayName("GCS"))
+                        .addAllowedValues(EnumValue.newBuilder().setDisplayName("CLOUD_STORAGE"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("MODEL"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("PUBSUB"))
                         .addAllowedValues(EnumValue.newBuilder().setDisplayName("S3"))

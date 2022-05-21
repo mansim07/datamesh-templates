@@ -1,0 +1,17 @@
+dq_report_config:
+  project_id: "mdm-dg"
+  dataset_id: "operations_db"
+  table_id: "dq_summary"
+quality_score: derived
+dq_dashboard: "<a href=\"https://dataproductdocumentation/core_customers.html\">Link to Data Quality Dashboard</a>"
+timeliness_score : derived
+correctness_score : derived
+integrity_score : derived
+conformity_score : derived
+completeness_score : derived
+uniqueness_score : derived
+accuracy_score : derived
+last_modified_by : derived
+last_modified_date : derived
+related_data_product : derived
+last_profiling_date: derived

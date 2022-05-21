@@ -1,3 +1,7 @@
+dlp_report_config:
+  project_id: "mdm-dg"
+  dataset_id: "operations_db"
+  table_id: "dlp_results_latest_v1"
 timeliness_score : 1
 correctness_score : 1
 integrity_score : 1

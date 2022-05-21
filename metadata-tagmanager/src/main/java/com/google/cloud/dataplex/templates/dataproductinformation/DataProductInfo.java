@@ -104,8 +104,9 @@ public class DataProductInfo {
 
                                 try (DataCatalogClient dataCatalogClient =
                                                 DataCatalogClient.create()) {
-
-                                        if ("BIGQUERY".equals(entity.getSystem().name())) {
+                                        //extending support to GCS Storage
+                                        //if ("BIGQUERY".equals(entity.getSystem().name())) {
+                                        if(1==1){
 
                                             /*    Use this if tagging needs to be created at the actualy data object level
                                             entry = dataCatalogClient.lookupEntry(
