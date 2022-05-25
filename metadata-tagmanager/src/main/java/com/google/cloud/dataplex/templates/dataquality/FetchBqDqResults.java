@@ -6,7 +6,7 @@ import com.google.cloud.bigquery.FieldValueList;
 import com.google.cloud.bigquery.JobException;
 import com.google.cloud.bigquery.QueryJobConfiguration;
 import com.google.cloud.bigquery.TableResult;
-import com.google.cloud.dataplex.templates.dataclassification.config.DataClassificationConfig;
+//import com.google.cloud.dataplex.templates.dataquality.config.DataProductQualityConfig;
 import com.google.cloud.dataplex.templates.dataquality.config.DataProductQualityConfig;
 import com.google.cloud.dataplex.utils.BigqueryEntity;
 import com.google.protobuf.Timestamp;
@@ -31,24 +31,24 @@ public class FetchBqDqResults {
 
     public static final String QUERY =
             "WITH `latest_dq` AS (SELECT invocation_id,MAX(TIMESTAMP(execution_ts)) AS exec_ts, "
-            + " FROM `" + "%s" + "." + "%s" + "." + "%s" + "` summary" 
-            + " WHERE table_id='"+ "%s" + "." + "%s" + "." + "%s" +"' " 
-            + " GROUP BY invocation_id ORDER BY exec_ts LIMIT 1 ) "
-            + "(SELECT MAX(invocation_id) AS invocation_id,"
-            +"STRING(MAX(execution_ts),'UTC') AS exec_ts," 
-            + "dimension AS dimension,AVG(percentage) AS percentage "
-            + "FROM (SELECT summary.invocation_id AS invocation_id, " 
-            + "execution_ts AS execution_ts,dimension AS dimension,"
-            + "CASE WHEN complex_rule_validation_errors_count IS NOT NULL THEN 100 - (complex_rule_validation_errors_count/rows_validated * 100) "
-            + "ELSE success_percentage * 100 END AS percentage " 
-            + " FROM `"+ "%s" + "." + "%s" + "." + "%s" + "` summary " 
-            + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id) A GROUP BY dimension " 
-            + "UNION ALL SELECT * FROM ( SELECT MAX(summary.invocation_id) AS invocation_id, " 
-            + "STRING(MAX(execution_ts),'UTC') AS exec_ts,'QUALITY_SCORE' AS dimension, "
-            + "AVG(success_percentage * 100) AS percentage " 
-            + " FROM `"+ "%s" + "." + "%s" + "." + "%s" + "` summary "
-            + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id ) B where invocation_id is not null )";
-    private String qualityScore; 
+                    + " FROM `" + "%s" + "." + "%s" + "." + "%s" + "` summary" + " WHERE table_id='"
+                    + "%s" + "." + "%s" + "." + "%s" + "' "
+                    + " GROUP BY invocation_id ORDER BY exec_ts LIMIT 1 ) "
+                    + "(SELECT MAX(invocation_id) AS invocation_id,"
+                    + "STRING(MAX(execution_ts),'UTC') AS exec_ts,"
+                    + "dimension AS dimension,AVG(percentage) AS percentage "
+                    + "FROM (SELECT summary.invocation_id AS invocation_id, "
+                    + "execution_ts AS execution_ts,dimension AS dimension,"
+                    + "CASE WHEN complex_rule_validation_errors_count IS NOT NULL THEN 100 - (complex_rule_validation_errors_count/rows_validated * 100) "
+                    + "ELSE success_percentage * 100 END AS percentage " + " FROM `" + "%s" + "."
+                    + "%s" + "." + "%s" + "` summary "
+                    + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id) A GROUP BY dimension "
+                    + "UNION ALL SELECT * FROM ( SELECT MAX(summary.invocation_id) AS invocation_id, "
+                    + "STRING(MAX(execution_ts),'UTC') AS exec_ts,'QUALITY_SCORE' AS dimension, "
+                    + "AVG(success_percentage * 100) AS percentage " + " FROM `" + "%s" + "." + "%s"
+                    + "." + "%s" + "` summary "
+                    + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id ) B where invocation_id is not null )";
+    private String qualityScore;
     private String percentageTimeliness;
     private String percentageCorrectness;
     private String percentageIntegrity;
@@ -59,7 +59,7 @@ public class FetchBqDqResults {
     private String execTs; // To Do: Change it to timestamp in future
 
     public FetchBqDqResults() {
-        this.qualityScore="-";
+        this.qualityScore = "-";
         this.percentageTimeliness = "-";
         this.percentageCorrectness = "-";
         this.percentageIntegrity = "-";
@@ -160,14 +160,15 @@ public class FetchBqDqResults {
 
         bqQuery = String.format(QUERY, config.getDqReportConfig().getProjectId().trim(),
                 config.getDqReportConfig().getDatasetId().trim(),
-                config.getDqReportConfig().getTableId().trim(),
-                bqEntity.getDatasetId(),bqEntity.getTableId(), bqEntity.getProjectId(),
+                config.getDqReportConfig().getTableId().trim(), bqEntity.getDatasetId(),
+                bqEntity.getTableId(), bqEntity.getProjectId(),
                 config.getDqReportConfig().getProjectId().trim(),
                 config.getDqReportConfig().getDatasetId().trim(),
-                config.getDqReportConfig().getTableId().trim(),config.getDqReportConfig().getProjectId().trim(),
+                config.getDqReportConfig().getTableId().trim(),
+                config.getDqReportConfig().getProjectId().trim(),
                 config.getDqReportConfig().getDatasetId().trim(),
-                config.getDqReportConfig().getTableId().trim() );
-                //
+                config.getDqReportConfig().getTableId().trim());
+        //
 
         LOGGER.info("Query executed against the DQ Table is {}", bqQuery);
 
@@ -180,50 +181,56 @@ public class FetchBqDqResults {
             LOGGER.info("Query executed against the DQ Table is {}", bqQuery);
             LOGGER.info("Number of rows retrieved {}", bqResults.getTotalRows());
 
-            //result.setNumRows(bqResults.getTotalRows());
+            // result.setNumRows(bqResults.getTotalRows());
 
             if (bqResults.getTotalRows() >= 1) {
 
                 for (FieldValueList row : bqResults.iterateAll()) {
                     // We can use the `get` method along with the column
                     // name to get the corresponding row entry
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("consistency"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("consistency"))) {
                         result.setPercentageCorrectness(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("correctness"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("correctness"))) {
                         result.setPercentageCorrectness(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("duplication"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("duplication"))) {
                         result.setPercentageUniqueness(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("completeness"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("completeness"))) {
                         result.setPercentageCompleteness(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("conformance"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("conformance"))) {
                         result.setPercentageConformity(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("integrity"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("integrity"))) {
                         result.setPercentageIntegrity(row.get("percentage").getStringValue());
 
                     }
 
-                    if (row.get("dimension").getStringValue().toLowerCase().equals(new String("quality_score"))) {
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("quality_score"))) {
                         result.setQualityScore(row.get("percentage").getStringValue());
                         result.setExecTs(row.get("exec_ts").getStringValue());
 
                     }
 
-                    
 
 
                 }

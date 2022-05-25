@@ -26,8 +26,8 @@ public class CreateTagTemplates {
 
         createDataProductInformationTagTemplate(locationName);
         createDataClassificationTagTemplate(locationName);
-
-
+        createDataProductQualityTagTemplate(locationName);
+        createDataProductExchangeTagTemplate(locationName);
 
     }
     // Create Data Product Information Tag
@@ -315,6 +315,169 @@ public class CreateTagTemplates {
                 .putFields("last_modified_date", last_modified_date).build();
         createTagTemplate(locationName, tagTemplateId, tagTemplate);
     }
+
+    public static void createDataProductQualityTagTemplate(LocationName locationName)
+    throws IOException {
+        String tagTemplateId = "data_product_quality";
+        TagTemplateField data_quality_score = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(13).setDescription("Overall Data Quality Score").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField timeliness_score = TagTemplateField
+        .newBuilder().setDisplayName("Timeliness Score").setIsRequired(true)
+        .setOrder(12).setDescription("An assessment of the timeliness percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField correctness_score = TagTemplateField
+        .newBuilder().setDisplayName("Correctness Score").setIsRequired(true)
+        .setOrder(11).setDescription("An assessment of the correctness percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField integrity_score = TagTemplateField
+        .newBuilder().setDisplayName("Integrity Score").setIsRequired(true)
+        .setOrder(10).setDescription("An assessment of the integrity percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField conformity_score = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(9).setDescription("An assessment of the conformity percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField completeness_score = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(8).setDescription("An assessment of the completeness percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField uniqueness_score = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(7).setDescription("An assessment of the uniqueness percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField accuracy_score = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(6).setDescription("An assessment of the accuracy percentage(0-100%)").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+        TagTemplateField related_data_products = TagTemplateField
+        .newBuilder().setDisplayName("Detailed Quality Report").setIsRequired(true)
+        .setOrder(5).setDescription("Detailed Quality Report").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.RICHTEXT).build())
+        .build();
+
+        TagTemplateField dq_dashboard = TagTemplateField
+        .newBuilder().setDisplayName("Data Quality Dashboard").setIsRequired(true)
+        .setOrder(4).setDescription("DQ Dashboard").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.RICHTEXT).build())
+        .build();
+
+        TagTemplateField last_modified_by = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(3).setDescription("User responsible for modifying the tag").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField last_modified_date = TagTemplateField.newBuilder().setDisplayName("last_modified_date")
+        .setIsRequired(true).setOrder(1)
+        .setDescription("when the tag was last modified")
+        .setType(FieldType.newBuilder()
+                .setPrimitiveType(FieldType.PrimitiveType.TIMESTAMP).build())
+        .build();
+
+        
+
+        TagTemplateField last_profiling_date = TagTemplateField
+        .newBuilder().setDisplayName("Last Profiling Date").setIsRequired(true)
+        .setOrder(1).setDescription("When Data Quality Job was last profiled or ran").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplate tagTemplate = TagTemplate.newBuilder()
+                .setDisplayName("Data Product Quality Score")
+                .setIsPubliclyReadable(true)
+                .putFields("data_quality_score", data_quality_score)
+                .putFields("timeliness_score", timeliness_score)
+                .putFields("correctness_score", correctness_score)
+                .putFields("integrity_score", integrity_score)
+                .putFields("conformity_score", conformity_score)
+                .putFields("completeness_score", completeness_score)
+                .putFields("uniqueness_score", uniqueness_score)
+                .putFields("accuracy_score", accuracy_score)
+                .putFields("last_modified_by", last_modified_by)
+                .putFields("last_modified_date", last_modified_date)
+                .putFields("related_data_products", related_data_products)
+                .putFields("dq_dashboard", dq_dashboard)
+                .putFields("last_profiling_date", last_profiling_date).build();
+
+        createTagTemplate(locationName, tagTemplateId, tagTemplate);
+
+    }
+
+
+    public static void createDataProductExchangeTagTemplate(LocationName locationName)
+    throws IOException {
+        String tagTemplateId = "data_product_exchange";
+        TagTemplateField data_exchange_platform = TagTemplateField
+        .newBuilder().setDisplayName("data_exchange_platform").setIsRequired(true)
+        .setOrder(6).setDescription("Data Exchange Platform").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplateField data_exchange_url = TagTemplateField
+        .newBuilder().setDisplayName("data_exchange_url").setIsRequired(true)
+        .setOrder(5).setDescription("Data Exchange Link").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.RICHTEXT).build())
+        .build();
+
+        TagTemplateField access_instructions = TagTemplateField
+        .newBuilder().setDisplayName("access_instructions").setIsRequired(true)
+        .setOrder(4).setDescription("Access Instructions").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.RICHTEXT).build())
+        .build();
+
+        TagTemplateField publish_date = TagTemplateField.newBuilder().setDisplayName("publish date")
+        .setIsRequired(true).setOrder(3)
+        .setDescription("when the data product was last published for consumption")
+        .setType(FieldType.newBuilder()
+                .setPrimitiveType(FieldType.PrimitiveType.TIMESTAMP).build())
+        .build();
+
+        TagTemplateField last_modified_date = TagTemplateField.newBuilder().setDisplayName("last_modified_date")
+        .setIsRequired(true).setOrder(2)
+        .setDescription("when the tag was last modified")
+        .setType(FieldType.newBuilder()
+                .setPrimitiveType(FieldType.PrimitiveType.TIMESTAMP).build())
+        .build();
+
+        TagTemplateField last_modified_by = TagTemplateField
+        .newBuilder().setDisplayName("Data Product Quality").setIsRequired(true)
+        .setOrder(1).setDescription("User responsible for modifying the tag").setType(FieldType
+                .newBuilder().setPrimitiveType(FieldType.PrimitiveType.STRING).build())
+        .build();
+
+        TagTemplate tagTemplate = TagTemplate.newBuilder()
+                .setDisplayName("Data Product Exchange")
+                .setIsPubliclyReadable(true)
+                .putFields("data_exchange_platform", data_exchange_platform)
+                .putFields("data_exchange_url", data_exchange_url)
+                .putFields("access_instructions", access_instructions)
+                .putFields("publish_date", publish_date)
+                .putFields("last_modified_date", last_modified_date)
+                .putFields("last_modified_by", last_modified_by)
+                .build();
+
+        createTagTemplate(locationName, tagTemplateId, tagTemplate);
+
+    }
+
+
 
     public static void createTagTemplate(LocationName name, String tagTemplateId,
             TagTemplate template) throws IOException {
