@@ -31,7 +31,7 @@ public class DataProductPublicationConfig {
     @NotNull
     private String access_instructions;
     @NotNull
-    private String host_date;
+    private String publish_date;
     @NotNull
     private String last_modified_by;
     @NotNull
@@ -59,12 +59,12 @@ public class DataProductPublicationConfig {
     public void setAccessInstruction(String access_instructions) {
         this.access_instructions = access_instructions;
     }
-    public String getHostDate() {
-        return host_date;
+    public String getPublishDate() {
+        return publish_date;
     }
 
     public void setHostDate(String host_date) {
-        this.host_date = host_date;
+        this.publish_date = host_date;
     }
     public String getLateModifiedBy() {
         return last_modified_by;
