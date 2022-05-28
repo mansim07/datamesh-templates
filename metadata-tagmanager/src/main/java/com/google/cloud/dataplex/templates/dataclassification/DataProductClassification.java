@@ -178,6 +178,10 @@ public class DataProductClassification {
                                                         cmd.getOptionValue(TAG_TEMPLATE_ID_OPT),
                                                         values, "Data Classification Info");
 
+                                        LOGGER.info("Tag was successfully created for entry {} using tag template {}",
+                                                        entry.getFullyQualifiedName(),
+                                                        cmd.getOptionValue(TAG_TEMPLATE_ID_OPT));
+
                                 }
 
                                 else {
@@ -205,31 +209,31 @@ public class DataProductClassification {
                 }
 
                 if (config.getRiskScore().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getRiskScore().isEmpty()) {
+                                || config.getRiskScore().isEmpty()) {
                         config.setRiskScore(dlpResults.getRiskScore());
 
                 }
 
                 if (config.getInfoTypes().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getInfoTypes().isEmpty()) {
+                                || config.getInfoTypes().isEmpty()) {
                         config.setInfoTypes(dlpResults.getInfoTypes());
 
                 }
 
                 if (config.getEncryptionKeyType().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getEncryptionKeyType().isEmpty()) {
+                                || config.getEncryptionKeyType().isEmpty()) {
                         config.setEncryptionKeyType(dlpResults.getEncryptionStatus());
 
                 }
 
                 if (config.getLastProfilingDate().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getLastProfilingDate().isEmpty()) {
+                                || config.getLastProfilingDate().isEmpty()) {
                         config.setLastProfilingDate(Timestamps.toString(dlpResults.getProfileTs()));
 
                 }
 
                 if (config.getRelatedDataProducts().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getRelatedDataProducts().isEmpty()) {
+                                || config.getRelatedDataProducts().isEmpty()) {
                         config.setRelatedDataProducts(
                                         "<a href=\"https://console.cloud.google.com/bigquery?p="
                                                         + config.getDLPReportConfig().getProjectId()
@@ -242,16 +246,16 @@ public class DataProductClassification {
                 // https://console.cloud.google.com/bigquery?p=mdm-dg&d=operations_db&page=dataset
 
 
-                if (config.getSensitivityScore().equalsIgnoreCase("SENSITIVITY_HIGH") || config
-                                .getSensitivityScore().equalsIgnoreCase("SENSITIVITY_MODERATE")
+                if (config.getSensitivityScore().equalsIgnoreCase("SENSITIVITY_HIGH")
+                                || config.getSensitivityScore()
+                                                .equalsIgnoreCase("SENSITIVITY_MODERATE")
                                 || config.getSensitivityScore().isEmpty()) {
                         config.setHasPii(true);
                 } else
                         config.setHasPii(false);
 
                 if (config.getLastModifiedBy().equalsIgnoreCase(DERIVE_INDICATOR)
-                                || config.getLastModifiedBy().isEmpty()
-                                ) {
+                                || config.getLastModifiedBy().isEmpty()) {
                         config.setLastModifiedBy(System.getProperty("user.name"));
 
                 }

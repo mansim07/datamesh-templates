@@ -155,7 +155,7 @@ public class FetchBqDqResults {
 
        
         BigqueryEntity bqEntity = BigqueryEntity.getBqAttributes(entityDataPath);
-        System.out.println("bqEntity Project Id is " + bqEntity.getProjectId());
+        
     
         FetchBqDqResults result = new FetchBqDqResults();
 

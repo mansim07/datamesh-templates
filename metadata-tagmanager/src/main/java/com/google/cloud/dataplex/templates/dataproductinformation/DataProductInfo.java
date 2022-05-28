@@ -100,22 +100,23 @@ public class DataProductInfo {
                                                 cmd.getOptionValue(PROJECT_NAME_OPT),
                                                 cmd.getOptionValue(LOCATION_OPT),
                                                 cmd.getOptionValue(LAKE_ID_OPT),
-                                                cmd.getOptionValue(ZONE_ID_OPT), cmd.getOptionValue(ENTITY_ID_OPT));
+                                                cmd.getOptionValue(ZONE_ID_OPT),
+                                                cmd.getOptionValue(ENTITY_ID_OPT));
 
                                 try (DataCatalogClient dataCatalogClient =
                                                 DataCatalogClient.create()) {
-                                        //extending support to GCS Storage
-                                        //if ("BIGQUERY".equals(entity.getSystem().name())) {
-                                        if(1==1){
+                                        // extending support to GCS Storage
+                                        // if ("BIGQUERY".equals(entity.getSystem().name())) {
+                                        if (1 == 1) {
 
-                                            /*    Use this if tagging needs to be created at the actualy data object level
-                                            entry = dataCatalogClient.lookupEntry(
-                                                                LookupEntryRequest.newBuilder()
-                                                                                .setLinkedResource(
-                                                                                                String.format("%s/%s",
-                                                                                                                API_URI_BQ,
-                                                                                                                entity.getDataPath()))
-                                                                                .build()); */
+                                                /*
+                                                 * Use this if tagging needs to be created at the
+                                                 * actualy data object level entry =
+                                                 * dataCatalogClient.lookupEntry(
+                                                 * LookupEntryRequest.newBuilder()
+                                                 * .setLinkedResource( String.format("%s/%s",
+                                                 * API_URI_BQ, entity.getDataPath())) .build());
+                                                 */
 
                                                 entry = dataCatalogClient.lookupEntry(
                                                                 LookupEntryRequest.newBuilder()
@@ -390,6 +391,11 @@ public class DataProductInfo {
                                                                 cmd.getOptionValue(
                                                                                 TAG_TEMPLATE_ID_OPT),
                                                                 values, "Data Product Info");
+
+                                                LOGGER.info("Tag was successfully created for entry {} using tag template {}",
+                                                                entry.getFullyQualifiedName(),
+                                                                cmd.getOptionValue(
+                                                                                TAG_TEMPLATE_ID_OPT));
 
                                         }
 

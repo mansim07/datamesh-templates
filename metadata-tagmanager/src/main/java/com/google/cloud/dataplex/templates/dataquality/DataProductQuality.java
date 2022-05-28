@@ -105,7 +105,8 @@ public class DataProductQuality {
                                                                         cmd.getOptionValue(
                                                                                         PROJECT_NAME_OPT),
                                                                         cmd.getOptionValue(
-                                                                                        ZONE_ID_OPT).replace('-', '_'),
+                                                                                        ZONE_ID_OPT)
+                                                                                        .replace('-', '_'),
                                                                         entity.getId());
                                                 } else {
                                                         data_path = entity.getDataPath();
@@ -193,6 +194,10 @@ public class DataProductQuality {
                                         TagOperations.publishTag(entry, dataCatalogClient,
                                                         cmd.getOptionValue(TAG_TEMPLATE_ID_OPT),
                                                         values, "Data Product Quality Tag");
+
+                                        LOGGER.info("Tag was successfully created for entry {} using tag template {}",
+                                                        entry.getFullyQualifiedName(),
+                                                        cmd.getOptionValue(TAG_TEMPLATE_ID_OPT));
 
                                 }
 

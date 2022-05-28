@@ -63,21 +63,21 @@ public class DataProductPublicationConfig {
         return publish_date;
     }
 
-    public void setHostDate(String host_date) {
+    public void setPublishDate(String host_date) {
         this.publish_date = host_date;
     }
-    public String getLateModifiedBy() {
+    public String getLastModifiedBy() {
         return last_modified_by;
     }
 
-    public void setLateModifiedBy(String last_modified_by) {
+    public void setLastModifiedBy(String last_modified_by) {
         this.last_modified_by = last_modified_by;
     }
-    public String getLateModifiedDate() {
+    public String getLastModifiedDate() {
         return last_modified_date;
     }
 
-    public void setLateModifiedDate(String last_modified_date) {
+    public void setLastModifiedDate(String last_modified_date) {
         this.last_modified_date = last_modified_date;
     }
   
