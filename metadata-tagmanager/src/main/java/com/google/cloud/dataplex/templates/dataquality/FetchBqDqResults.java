@@ -152,16 +152,19 @@ public class FetchBqDqResults {
      */
     public static FetchBqDqResults getResults(String entityDataPath,
             DataProductQualityConfig config) {
-        BigqueryEntity bqEntity = BigqueryEntity.getBqAttributes(entityDataPath);
 
+       
+        BigqueryEntity bqEntity = BigqueryEntity.getBqAttributes(entityDataPath);
+        System.out.println("bqEntity Project Id is " + bqEntity.getProjectId());
+    
         FetchBqDqResults result = new FetchBqDqResults();
 
         String bqQuery;
 
         bqQuery = String.format(QUERY, config.getDqReportConfig().getProjectId().trim(),
                 config.getDqReportConfig().getDatasetId().trim(),
-                config.getDqReportConfig().getTableId().trim(), bqEntity.getDatasetId(),
-                bqEntity.getTableId(), bqEntity.getProjectId(),
+                config.getDqReportConfig().getTableId().trim(), bqEntity.getProjectId(),
+                bqEntity.getDatasetId(), bqEntity.getTableId(),
                 config.getDqReportConfig().getProjectId().trim(),
                 config.getDqReportConfig().getDatasetId().trim(),
                 config.getDqReportConfig().getTableId().trim(),

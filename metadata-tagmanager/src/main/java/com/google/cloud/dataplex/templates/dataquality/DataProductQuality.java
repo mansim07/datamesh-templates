@@ -105,7 +105,7 @@ public class DataProductQuality {
                                                                         cmd.getOptionValue(
                                                                                         PROJECT_NAME_OPT),
                                                                         cmd.getOptionValue(
-                                                                                        ZONE_ID_OPT),
+                                                                                        ZONE_ID_OPT).replace('-', '_'),
                                                                         entity.getId());
                                                 } else {
                                                         data_path = entity.getDataPath();

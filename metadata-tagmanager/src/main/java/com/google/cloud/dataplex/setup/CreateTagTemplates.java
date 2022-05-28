@@ -408,7 +408,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField integrity_score = TagTemplateField.newBuilder()
-                                .setDisplayName("Integrity Score").setIsRequired(true).setOrder(10)
+                                .setDisplayName("Data Product Integrity Score").setIsRequired(true).setOrder(10)
                                 .setDescription("An assessment of the integrity percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
                                                 .setPrimitiveType(FieldType.PrimitiveType.STRING)
@@ -416,7 +416,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField conformity_score = TagTemplateField.newBuilder()
-                                .setDisplayName("Data Product Quality").setIsRequired(true)
+                                .setDisplayName("Data Product Conformity Score").setIsRequired(true)
                                 .setOrder(9)
                                 .setDescription("An assessment of the conformity percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
@@ -425,7 +425,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField completeness_score = TagTemplateField.newBuilder()
-                                .setDisplayName("Data Product Quality").setIsRequired(true)
+                                .setDisplayName("Data Product Completeness Score").setIsRequired(true)
                                 .setOrder(8)
                                 .setDescription("An assessment of the completeness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
@@ -434,7 +434,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField uniqueness_score = TagTemplateField.newBuilder()
-                                .setDisplayName("Data Product Quality").setIsRequired(true)
+                                .setDisplayName("Data Product Uniqueness Score").setIsRequired(true)
                                 .setOrder(7)
                                 .setDescription("An assessment of the uniqueness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
@@ -443,7 +443,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField accuracy_score = TagTemplateField.newBuilder()
-                                .setDisplayName("Data Product Quality").setIsRequired(true)
+                                .setDisplayName("Data Product Accuracy Score").setIsRequired(true)
                                 .setOrder(6)
                                 .setDescription("An assessment of the accuracy percentage(0-100%)")
                                 .setType(FieldType.newBuilder()

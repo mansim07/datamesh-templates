@@ -1,7 +1,7 @@
 dq_report_config:
-  project_id: "mdm-dg"
-  dataset_id: "operations_db"
-  table_id: "dq_summary"
+  project_id: "bankofmars-data-governance"
+  dataset_id: "data_quality"
+  table_id: "dq_results"
 quality_score: derived
 dq_dashboard: "<a href=\"https://dataproductdocumentation/core_customers.html\">Link to Data Quality Dashboard</a>"
 timeliness_score : derived
