@@ -144,7 +144,7 @@ public class DataProductPublicationInfo {
             values.put("data_exchange_platform", TagField.newBuilder().setStringValue(config.getDataExchangePlatform()).build());
             values.put("data_exchange_url", TagField.newBuilder().setRichtextValue(config.getDataExchangeUrl()).build());
             values.put ("access_instructions", TagField.newBuilder().setRichtextValue(config.getAccessInstruction()).build());
-            values.put ("host_date", TagField.newBuilder().setTimestampValue(hosttime_ts).build());
+            values.put ("publish_date", TagField.newBuilder().setTimestampValue(hosttime_ts).build());
             values.put("last_modified_by", TagField.newBuilder().setStringValue(System.getProperty("user.name")).build()); 
             values.put("last_modified_date", TagField.newBuilder().setTimestampValue(timestamp).build());
 
