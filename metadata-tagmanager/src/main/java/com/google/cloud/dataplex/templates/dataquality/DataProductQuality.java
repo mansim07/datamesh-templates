@@ -93,11 +93,27 @@ public class DataProductQuality {
                                                         && !config.getDqReportConfig().getTableId()
                                                                         .isEmpty()) {
                                                 LOGGER.info("Fetching the Results from the DQ table...");
+                                                LOGGER.info("Data path for the entity is  {}",
+                                                                entity.getDataPath());
+                                                String data_path = "";
+                                                // projects/bankofmars-retail-customers/datasets/data_products_basetables/tables/encrypted_first_party_data_v1_1
+
+                                                if ("CLOUD_STORAGE".equals(
+                                                                entity.getSystem().name())) {
+                                                        data_path = String.format(
+                                                                        "projects/%s/datasets/%s/tables/%s",
+                                                                        cmd.getOptionValue(
+                                                                                        PROJECT_NAME_OPT),
+                                                                        cmd.getOptionValue(
+                                                                                        ZONE_ID_OPT),
+                                                                        entity.getId());
+                                                } else {
+                                                        data_path = entity.getDataPath();
+                                                }
 
 
                                                 FetchBqDqResults dqResults = FetchBqDqResults
-                                                                .getResults(entity.getDataPath(),
-                                                                                config);
+                                                                .getResults(data_path, config);
 
                                                 config = resetValues(config, dqResults);
 
@@ -150,14 +166,15 @@ public class DataProductQuality {
                                                                         config.getDqDashboard())
                                                                         .build());
 
-                                        /*values.put("last_profiling_date", TagField.newBuilder()
-                                                        .setTimestampValue(Timestamps.parse(config
-                                                                        .getLastProfilingDate()))
-                                                        .build());*/
+                                        /*
+                                         * values.put("last_profiling_date", TagField.newBuilder()
+                                         * .setTimestampValue(Timestamps.parse(config
+                                         * .getLastProfilingDate())) .build());
+                                         */
 
-                                                        values.put("last_profiling_date",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getLastProfilingDate())
+                                        values.put("last_profiling_date",
+                                                        TagField.newBuilder().setStringValue(config
+                                                                        .getLastProfilingDate())
                                                                         .build());
 
                                         values.put("last_modified_by",
@@ -253,7 +270,7 @@ public class DataProductQuality {
 
                 }
                 if (config.getRelatedDataProducts().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getRelatedDataProducts().isEmpty()) {
+                                || config.getRelatedDataProducts().isEmpty()) {
                         config.setRelatedDataProducts(
                                         "<a href=\"https://console.cloud.google.com/bigquery?p="
                                                         + config.getDqReportConfig().getProjectId()
@@ -264,18 +281,17 @@ public class DataProductQuality {
                 }
 
                 if (config.getLastModifiedBy().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getLastModifiedBy().isEmpty()
-                ) {
-        config.setLastModifiedBy(System.getProperty("user.name"));
+                                || config.getLastModifiedBy().isEmpty()) {
+                        config.setLastModifiedBy(System.getProperty("user.name"));
 
-}
+                }
 
-if (config.getLastModifiedDate().equalsIgnoreCase(DERIVE_INDICATOR)
-                || config.getLastModifiedDate().isEmpty()) {
-        config.setLastModifiedDate(Timestamps.toString(
-                        Timestamps.fromMillis(System.currentTimeMillis())));
+                if (config.getLastModifiedDate().equalsIgnoreCase(DERIVE_INDICATOR)
+                                || config.getLastModifiedDate().isEmpty()) {
+                        config.setLastModifiedDate(Timestamps.toString(
+                                        Timestamps.fromMillis(System.currentTimeMillis())));
 
-}
+                }
 
                 return config;
         }
