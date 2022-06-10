@@ -45,7 +45,7 @@ public class FetchBqDqResults {
                     + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id) A GROUP BY dimension "
                     + "UNION ALL SELECT * FROM ( SELECT MAX(summary.invocation_id) AS invocation_id, "
                     + "STRING(MAX(execution_ts),'UTC') AS exec_ts,'QUALITY_SCORE' AS dimension, "
-                    + "AVG(success_percentage * 100) AS percentage " + " FROM `" + "%s" + "." + "%s"
+                    + "ROUND(AVG(success_percentage * 100),0) AS percentage " + " FROM `" + "%s" + "." + "%s"
                     + "." + "%s" + "` summary "
                     + "JOIN `latest_dq` dq ON summary.invocation_id=dq.invocation_id ) B where invocation_id is not null )";
     private String qualityScore;
@@ -233,7 +233,11 @@ public class FetchBqDqResults {
                         result.setExecTs(row.get("exec_ts").getStringValue());
 
                     }
+                    if (row.get("dimension").getStringValue().toLowerCase()
+                            .equals(new String("timeliness"))) {
+                        result.setPercentageTimeliness(row.get("percentage").getStringValue());
 
+                    }
 
 
                 }
