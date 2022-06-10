@@ -130,37 +130,37 @@ public class DataProductQuality {
                                         Map<String, TagField> values = new HashMap<>();
 
                                         values.put("data_quality_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getQualityScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getQualityScore()))
                                                                         .build());
 
                                         values.put("timeliness_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getTimelinessScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getTimelinessScore()))
                                                                         .build());
                                         values.put("correctness_score",
-                                                        TagField.newBuilder().setStringValue(config
-                                                                        .getCorrectnessScore())
+                                                        TagField.newBuilder().setDoubleValue(Double.parseDouble(config
+                                                                        .getCorrectnessScore()))
                                                                         .build());
                                         values.put("integrity_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getIntegrityScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getIntegrityScore()))
                                                                         .build());
                                         values.put("conformity_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getConformityScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getConformityScore()))
                                                                         .build());
                                         values.put("completeness_score",
-                                                        TagField.newBuilder().setStringValue(config
-                                                                        .getCompletenessScore())
+                                                        TagField.newBuilder().setDoubleValue(Double.parseDouble(config
+                                                                        .getCompletenessScore()))
                                                                         .build());
                                         values.put("uniqueness_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getUniquenessScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getUniquenessScore()))
                                                                         .build());
                                         values.put("accuracy_score",
-                                                        TagField.newBuilder().setStringValue(
-                                                                        config.getAccuracyScore())
+                                                        TagField.newBuilder().setDoubleValue(
+                                                                Double.parseDouble(config.getAccuracyScore()))
                                                                         .build());
                                         values.put("dq_dashboard",
                                                         TagField.newBuilder().setRichtextValue(

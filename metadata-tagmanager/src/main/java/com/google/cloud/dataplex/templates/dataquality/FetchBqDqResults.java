@@ -36,7 +36,7 @@ public class FetchBqDqResults {
                     + " GROUP BY invocation_id ORDER BY exec_ts LIMIT 1 ) "
                     + "(SELECT MAX(invocation_id) AS invocation_id,"
                     + "STRING(MAX(execution_ts),'UTC') AS exec_ts,"
-                    + "dimension AS dimension,AVG(percentage) AS percentage "
+                    + "dimension AS dimension,ROUND(AVG(percentage),0) AS percentage "
                     + "FROM (SELECT summary.invocation_id AS invocation_id, "
                     + "execution_ts AS execution_ts,dimension AS dimension,"
                     + "CASE WHEN complex_rule_validation_errors_count IS NOT NULL THEN 100 - (complex_rule_validation_errors_count/rows_validated * 100) "
@@ -59,14 +59,14 @@ public class FetchBqDqResults {
     private String execTs; // To Do: Change it to timestamp in future
 
     public FetchBqDqResults() {
-        this.qualityScore = "-";
-        this.percentageTimeliness = "-";
-        this.percentageCorrectness = "-";
-        this.percentageIntegrity = "-";
-        this.percentageConformity = "-";
-        this.percentageCompleteness = "-";
-        this.percentageUniqueness = "-";
-        this.percentageAccuracy = "-";
+        this.qualityScore = "-1";
+        this.percentageTimeliness = "-1";
+        this.percentageCorrectness = "-1";
+        this.percentageIntegrity = "-1";
+        this.percentageConformity = "-1";
+        this.percentageCompleteness = "-1";
+        this.percentageUniqueness = "-1";
+        this.percentageAccuracy = "-1";
         this.execTs = "9999-12-01T00:00:00.000000Z";
 
     }
