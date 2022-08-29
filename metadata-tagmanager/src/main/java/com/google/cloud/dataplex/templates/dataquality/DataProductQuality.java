@@ -76,17 +76,17 @@ public class DataProductQuality {
                                 // if ("BIGQUERY".equals(entity.getSystem().name())) {
                                 if (1 == 1) {
 
-                                        /*
-                                         * entry = dataCatalogClient.lookupEntry(LookupEntryRequest
-                                         * .newBuilder() .setLinkedResource(String.format("%s/%s",
-                                         * API_URI_BQ, entity.getDataPath())) .build());
-                                         */
+                                        
+                                          entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                          .newBuilder() .setLinkedResource(String.format("%s/%s",
+                                          API_URI_BQ, entity.getDataPath())) .build());
+                                         
 
-                                        entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                        /*entry = dataCatalogClient.lookupEntry(LookupEntryRequest
                                                         .newBuilder()
                                                         .setFullyQualifiedName("dataplex:"
                                                                         + dataplex_entity_name_fqdn)
-                                                        .build());
+                                                        .build());*/
                                         if (!config.getDqReportConfig().getProjectId().isEmpty()
                                                         && !config.getDqReportConfig()
                                                                         .getDatasetId().isEmpty()

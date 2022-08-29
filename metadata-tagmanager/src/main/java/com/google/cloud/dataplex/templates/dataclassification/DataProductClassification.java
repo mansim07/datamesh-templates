@@ -45,12 +45,16 @@ import org.apache.commons.cli.CommandLine;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+
 public class DataProductClassification {
+        
         private static final Logger LOGGER =
                         LoggerFactory.getLogger(DataProductClassification.class);
+        
 
         public static void main(String... args) throws IOException, ParseException {
-
+                
+                
                 LOGGER.info("Started the Data Classification metadata tagging process...");
                 Entry entry;
 
@@ -87,17 +91,17 @@ public class DataProductClassification {
 
                                 if ("BIGQUERY".equals(entity.getSystem().name())) {
 
-                                        /*
-                                         * entry = dataCatalogClient.lookupEntry(LookupEntryRequest
-                                         * .newBuilder() .setLinkedResource(String.format("%s/%s",
-                                         * API_URI_BQ, entity.getDataPath())) .build());
-                                         */
+                                        
+                                          entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                          .newBuilder() .setLinkedResource(String.format("%s/%s",
+                                          API_URI_BQ, entity.getDataPath())) .build());
+                                         
 
-                                        entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                        /*entry = dataCatalogClient.lookupEntry(LookupEntryRequest
                                                         .newBuilder()
                                                         .setFullyQualifiedName("dataplex:"
                                                                         + dataplex_entity_name_fqdn)
-                                                        .build());
+                                                        .build()); */
                                         if (!config.getDLPReportConfig().getProjectId().isEmpty()
                                                         && !config.getDLPReportConfig()
                                                                         .getDatasetId().isEmpty()

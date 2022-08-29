@@ -109,20 +109,22 @@ public class DataProductInfo {
                                         // if ("BIGQUERY".equals(entity.getSystem().name())) {
                                         if (1 == 1) {
 
-                                                /*
+                                                /* 
                                                  * Use this if tagging needs to be created at the
-                                                 * actualy data object level entry =
-                                                 * dataCatalogClient.lookupEntry(
-                                                 * LookupEntryRequest.newBuilder()
-                                                 * .setLinkedResource( String.format("%s/%s",
-                                                 * API_URI_BQ, entity.getDataPath())) .build());
-                                                 */
+                                                 * actualy data object level */
 
-                                                entry = dataCatalogClient.lookupEntry(
+                                                  entry =
+                                                  dataCatalogClient.lookupEntry(
+                                                  LookupEntryRequest.newBuilder()
+                                                  .setLinkedResource( String.format("%s/%s",
+                                                  API_URI_BQ, entity.getDataPath())) .build());
+                                                 
+
+                                               /*  entry = dataCatalogClient.lookupEntry(
                                                                 LookupEntryRequest.newBuilder()
                                                                                 .setFullyQualifiedName(
                                                                                                 "dataplex:" + dataplex_entity_name_fqdn)
-                                                                                .build());
+                                                                                .build()); */
 
                                                 if (config.getDataProductId()
                                                                 .equalsIgnoreCase(DERIVE_INDICATOR)
