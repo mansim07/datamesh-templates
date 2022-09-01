@@ -270,7 +270,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField data_product_documentation = TagTemplateField.newBuilder()
-                                .setDisplayName("Data Product Documentationr").setIsRequired(true)
+                                .setDisplayName("Data Product Documentation").setIsRequired(true)
                                 .setOrder(6)
                                 .setDescription("Product Documentation for reference purposes")
                                 .setType(FieldType.newBuilder()
@@ -344,7 +344,7 @@ public class CreateTagTemplates {
                                 .build();
 
                 TagTemplateField last_modified_by = TagTemplateField.newBuilder()
-                                .setDisplayName("last_modified_by").setIsRequired(true).setOrder(2)
+                                .setDisplayName("Last Modified By").setIsRequired(true).setOrder(2)
                                 .setDescription("Individual or service account ldaps reponsible for modifying the tag")
                                 .setType(FieldType.newBuilder()
                                                 .setPrimitiveType(FieldType.PrimitiveType.STRING)
