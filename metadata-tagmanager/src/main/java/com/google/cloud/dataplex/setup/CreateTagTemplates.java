@@ -386,7 +386,7 @@ public class CreateTagTemplates {
                                 .setDisplayName("Data Product Quality").setIsRequired(true)
                                 .setOrder(13).setDescription("Overall Data Quality Score")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -394,7 +394,7 @@ public class CreateTagTemplates {
                                 .setDisplayName("Timeliness Score").setIsRequired(true).setOrder(12)
                                 .setDescription("An assessment of the timeliness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -403,7 +403,7 @@ public class CreateTagTemplates {
                                 .setOrder(11)
                                 .setDescription("An assessment of the correctness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -411,7 +411,7 @@ public class CreateTagTemplates {
                                 .setDisplayName("Data Product Integrity Score").setIsRequired(true).setOrder(10)
                                 .setDescription("An assessment of the integrity percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -420,7 +420,7 @@ public class CreateTagTemplates {
                                 .setOrder(9)
                                 .setDescription("An assessment of the conformity percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -429,7 +429,7 @@ public class CreateTagTemplates {
                                 .setOrder(8)
                                 .setDescription("An assessment of the completeness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -438,7 +438,7 @@ public class CreateTagTemplates {
                                 .setOrder(7)
                                 .setDescription("An assessment of the uniqueness percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
 
@@ -447,7 +447,7 @@ public class CreateTagTemplates {
                                 .setOrder(6)
                                 .setDescription("An assessment of the accuracy percentage(0-100%)")
                                 .setType(FieldType.newBuilder()
-                                                .setPrimitiveType(FieldType.PrimitiveType.STRING)
+                                                .setPrimitiveType(FieldType.PrimitiveType.DOUBLE)
                                                 .build())
                                 .build();
                 TagTemplateField related_data_products = TagTemplateField.newBuilder()
