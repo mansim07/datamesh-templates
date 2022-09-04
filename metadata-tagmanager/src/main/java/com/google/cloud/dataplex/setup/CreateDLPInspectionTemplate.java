@@ -19,6 +19,7 @@ public class CreateDLPInspectionTemplate {
         //String projectId = "your-project-id";
         createInspectTemplate(projectId,location,templateId);
       }
+
     
       // Creates a template to persist configuration information
       public static void createInspectTemplate(String projectId, String location, String templateId) throws IOException {
@@ -61,6 +62,8 @@ public class CreateDLPInspectionTemplate {
           // Send the request to the API and process the response
           InspectTemplate response =
               dlpServiceClient.createInspectTemplate(createInspectTemplateRequest);
+
+         
           System.out.printf("Template created: %s", response.getName());
         }
       }
