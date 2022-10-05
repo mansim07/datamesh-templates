@@ -92,12 +92,12 @@ public class DataProductClassification {
                                 if ("BIGQUERY".equals(entity.getSystem().name())) {
 
                                         
-                                          entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                         entry = dataCatalogClient.lookupEntry(LookupEntryRequest
                                           .newBuilder() .setLinkedResource(String.format("%s/%s",
-                                          API_URI_BQ, entity.getDataPath())) .build());
+                                          API_URI_BQ, entity.getDataPath())) .build()); 
                                          
-
-                                        /*entry = dataCatalogClient.lookupEntry(LookupEntryRequest
+                                        /* 
+                                        entry = dataCatalogClient.lookupEntry(LookupEntryRequest
                                                         .newBuilder()
                                                         .setFullyQualifiedName("dataplex:"
                                                                         + dataplex_entity_name_fqdn)
